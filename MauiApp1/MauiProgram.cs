@@ -17,13 +17,12 @@ namespace MauiApp1
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            var a = Assembly.GetExecutingAssembly();
-            using var stream = a.GetManifestResourceStream("MauiApp1.appsettings.json");
-
             var config = new ConfigurationBuilder()
-                .AddJsonStream(stream)
                 .Build();
 
+            builder.Services.AddDbContext<AppDbContext>();
+
+            builder.Services.AddTransient<MainPage>();
 
             builder.Configuration.AddConfiguration(config);
 #if DEBUG

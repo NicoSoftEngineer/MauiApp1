@@ -7,7 +7,13 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-
+            <ListView x:Name="CustomerList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Mobile}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button
                 x:Name="CounterBtn"
                 Text="Click me" 

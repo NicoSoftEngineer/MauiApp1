@@ -12,13 +12,14 @@ namespace MauiApp1
 {
     public class AppDbContext : DbContext
     {
-        private const string DB_Name = "";
+        private const string DbName = "test.db";
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; } = null!;
 
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = $"Filename={PathDb.GetPath("test.db")}";
+            var connectionString = $"Filename={PathDb.GetPath(DbName)}";
             optionsBuilder.UseSqlite(connectionString);
         }
 

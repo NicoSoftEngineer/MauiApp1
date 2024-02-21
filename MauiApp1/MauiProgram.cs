@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using MauiApp1.ViewModels;
+using MauiApp1.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -22,7 +24,13 @@ namespace MauiApp1
 
             builder.Services.AddDbContext<AppDbContext>();
 
+            var context = new AppDbContext();
+            context.Database.EnsureCreated();
+            context.Dispose();
+
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainPageViewModel>();
+
 
             builder.Configuration.AddConfiguration(config);
 #if DEBUG
